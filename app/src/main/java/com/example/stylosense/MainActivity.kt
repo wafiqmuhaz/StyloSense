@@ -29,19 +29,6 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-    private fun setCameraPreview() {
-        setContent {
-            StyloSenseTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    val NavHostController = rememberNavController()
-                }
-            }
-        }
-    }
 }
 
 @Composable
@@ -49,4 +36,3 @@ private fun ShowScreen(context: Context) {
     val navHostController = rememberNavController()
     RootNavigationGraph(navHostController = navHostController, context = context)
 }
-
