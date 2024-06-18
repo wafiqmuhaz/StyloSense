@@ -53,7 +53,7 @@ val Purple = "#5A08B8".toColor()
 @SuppressLint("UnusedContentLambdaTargetStateParameter")
 @OptIn(ExperimentalPagerApi::class, ExperimentalAnimationApi::class)
 @Composable
-fun SplashScreen(navController: NavController) {
+fun SplashPage(navController: NavController) {
     val splashImageList = listOf(
         R.drawable.splash_1,
         R.drawable.splash_2,
@@ -159,7 +159,7 @@ fun SplashScreen(navController: NavController) {
                 currentPosition.value++
                 animate.value = !animate.value
             } else {
-                navController.navigate(AuthPage.SignInScreen.route)
+                navController.navigate(AuthPage.SignInPage.route)
             }
         }
     }

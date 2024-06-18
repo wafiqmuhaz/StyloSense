@@ -11,15 +11,15 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.example.stylosense.presentations.graph.Graph
-import com.example.stylosense.presentations.page.splash_page.SplashScreen
+import com.example.stylosense.presentations.page.splash_page.SplashPage
 
 
-fun NavGraphBuilder.authNavGraph(navController: NavHostController, context: Context) {
+fun NavGraphBuilder.authNavigationGraph(navController: NavHostController, context: Context) {
     navigation(
         route = Graph.AUTHENTICATION_GRAPH,
-        startDestination = AuthPage.OnBoardingScreen.route
+        startDestination = AuthPage.OnBoardingPage.route
     ) {
-        composable(AuthPage.OnBoardingScreen.route) {
+        composable(AuthPage.OnBoardingPage.route) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 (context as Activity).window.decorView.windowInsetsController?.hide(
                     WindowInsets.Type.statusBars()
@@ -30,11 +30,11 @@ fun NavGraphBuilder.authNavGraph(navController: NavHostController, context: Cont
                     WindowManager.LayoutParams.FLAG_FULLSCREEN
                 )
             }
-            SplashScreen(navController)
+            SplashPage(navController)
 
             Log.d("Navigation Call", "Called Splash Screen")
         }
-        composable(AuthPage.SignInScreen.route) {
+        composable(AuthPage.SignInPage.route) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 (context as Activity).window.decorView.windowInsetsController?.show(
                     WindowInsets.Type.statusBars()

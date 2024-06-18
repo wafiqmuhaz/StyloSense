@@ -8,7 +8,6 @@ data class TaylorModel(
     val images: List<Int>,
     val colors: List<Color>,
     val rating: Double,
-//    val price: Double,
     val price: String,
     val isFavourite: Boolean,
     val isPopular: Boolean,

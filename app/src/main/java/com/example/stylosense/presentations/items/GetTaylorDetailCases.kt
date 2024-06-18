@@ -1,7 +1,5 @@
 package com.example.stylosense.presentations.items
 
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class GetProductDetailUseCase @Inject constructor(private val repository: ProductRepository) {

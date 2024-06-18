@@ -3,17 +3,16 @@ package com.example.stylosense.presentations.graph.home_graph
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import com.example.stylosense.presentations.graph.Graph
-import com.example.stylosense.presentations.graph.detail_graph.detailNavGraph
+import com.example.stylosense.presentations.graph.detail_graph.detailNavigationGraph
 
 
 @Composable
-fun HomeNavGraph(navHostController: NavHostController) {
+fun HomeNavigationGraph(navHostController: NavHostController) {
     NavHost(
         navController = navHostController,
         route = Graph.HOME_GRAPH,
-        startDestination = ShopHomePage.DashboardScreen.route
+        startDestination = ShopHomePage.DashboardPage.route
     ) {
 //        composable(ShopHomeScreen.DashboardScreen.route) {
 //            DashboardScreen(
@@ -72,6 +71,6 @@ fun HomeNavGraph(navHostController: NavHostController) {
 //            LaundryScreen()
 //        }
 //        //detail graph
-        detailNavGraph(navController = navHostController)
+        detailNavigationGraph(navController = navHostController)
     }
 }

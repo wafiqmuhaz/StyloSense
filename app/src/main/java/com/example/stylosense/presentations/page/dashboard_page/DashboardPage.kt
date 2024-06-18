@@ -388,7 +388,7 @@ fun DashboardPage(
                         .width(150.dp)
                         .height(150.dp)
                         .clip(RoundedCornerShape(20.dp))
-                        .clickable { navController.navigate(ShopHomePage.LaundryScreen.route) }
+                        .clickable { navController.navigate(ShopHomePage.LaundryPage.route) }
                 ) {
                     //constrains
                     val (bannerText2, bannerImage2) = createRefs()

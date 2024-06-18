@@ -6,19 +6,19 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.stylosense.presentations.graph.Graph
-import com.example.stylosense.presentations.graph.auth_graph.authNavGraph
-import com.example.stylosense.presentations.page.home_page.HomeScreen
+import com.example.stylosense.presentations.graph.auth_graph.authNavigationGraph
+import com.example.stylosense.presentations.page.home_page.HomePage
 
 @Composable
-fun RootNavGraph(navHostController: NavHostController, context: Context) {
+fun RootNavigationGraph(navHostController: NavHostController, context: Context) {
     NavHost(
         navController = navHostController,
         route = Graph.ROOT_GRAPH,
         startDestination = Graph.AUTHENTICATION_GRAPH,
     ) {
-        authNavGraph(navHostController, context)
+        authNavigationGraph(navHostController, context)
         composable(route = Graph.HOME_GRAPH) {
-            HomeScreen()
+            HomePage()
         }
     }
 }

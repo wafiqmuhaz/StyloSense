@@ -74,11 +74,11 @@ fun NavBarWidgets(
 
     //hide topBar
     when (navBackStackEntry?.destination?.route) {
-        ShopHomePage.DashboardScreen.route -> {
+        ShopHomePage.DashboardPage.route -> {
             bottomNavVisibility = true
             isVisible(true)
         }
-        ShopHomePage.FavouriteScreen.route -> {
+        ShopHomePage.FavouritePage.route -> {
             bottomNavVisibility = true
             isVisible(true)
         }

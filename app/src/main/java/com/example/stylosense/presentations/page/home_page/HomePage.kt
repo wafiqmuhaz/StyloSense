@@ -15,15 +15,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.stylosense.presentations.graph.detail_graph.DetailPage
-import com.example.stylosense.presentations.graph.home_graph.HomeNavGraph
+import com.example.stylosense.presentations.graph.home_graph.HomeNavigationGraph
 import com.example.stylosense.presentations.widgets.AppBarWidget
 import com.example.stylosense.presentations.widgets.NavBarWidgets
 
 
 @SuppressLint("RememberReturnType")
 @Composable
-fun HomeScreen(
+fun HomePage(
     navController: NavHostController = rememberNavController(),
 //    scaffoldState: ScaffoldState = rememberScaffoldState(),
     boxScrollState: ScrollState = rememberScrollState(),
@@ -65,7 +64,7 @@ fun HomeScreen(
                 .padding(padding)
                 .verticalScroll(boxScrollState)
         ) {
-            HomeNavGraph(navHostController = navController)
+            HomeNavigationGraph(navHostController = navController)
         }
     }
 }
