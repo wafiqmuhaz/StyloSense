@@ -6,7 +6,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.example.stylosense.presentations.common.Const
 import com.example.stylosense.presentations.graph.Graph
-import com.example.stylosense.presentations.page.detail_taylor_page.component.DetailTaylorPage
 import com.example.stylosense.presentations.page.cart_page.CartPage
 import com.example.stylosense.presentations.page.detail_chat_page.ChatDetailPage
 import com.example.stylosense.presentations.page.notif_page.NotificationPage
@@ -22,14 +21,6 @@ fun NavGraphBuilder.detailNavigationGraph(navController: NavHostController) {
         }
         composable(DetailPage.NotificationPage.route) {
             NotificationPage()
-        }
-//        composable(DetailPage.TaylorDetailPage.route + "/{productId}") {
-//            DetailTaylorPage() {
-//                navController.popBackStack()
-//            }
-//        }
-        composable(DetailPage.TaylorDetailPage.route) {
-            DetailTaylorPage()
         }
         composable(DetailPage.ChatDetailPage.route) {
             ChatDetailPage()

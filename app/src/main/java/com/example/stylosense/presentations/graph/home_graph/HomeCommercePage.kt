@@ -23,8 +23,19 @@ sealed class ShopCommercePage(val route: String) {
     object FeaturePage4 : ShopCommercePage("feature_screen_4")
     //Taylor&Laundry
     object TaylorPage : ShopCommercePage("taylor_screen")
+    object TrackOrderPage : ShopCommercePage("track_order_screen")
+
     object LaundryPage : ShopCommercePage("laundry_screen")
     object TaylorDetailPage : ShopCommercePage("detail_taylor")
+
+    object PaymentMethodPage : ShopCommercePage("payment_method_screen")
+
+    object OTPPage : ShopCommercePage("otp_screen")
+    object SuccessPaymentPage : ShopCommercePage("success_payment_page")
+
+    object DetailTaylor : ShopCommercePage("detail_taylor/{tailorId}") {
+    fun createRoute(tailorId: Int): String = "detail_taylor/$tailorId"
+    }
     object LaundryDetailPage : ShopCommercePage("detail_laundry")
 //    object FeaturePage4 : ShopCommercePage("feature_screen_4")
 }

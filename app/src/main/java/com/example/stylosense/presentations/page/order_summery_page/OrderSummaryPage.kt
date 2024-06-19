@@ -1,13 +1,31 @@
-package com.example.stylosense.presentations.page.tailor_list_page
+package com.example.stylosense.presentations.page.order_summery_page
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -17,13 +35,21 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import coil.compose.rememberImagePainter
 import com.example.stylosense.R
+import com.example.stylosense.presentations.graph.auth_graph.AuthPage
+import com.example.stylosense.presentations.graph.home_graph.ShopCommercePage
+import com.example.stylosense.presentations.page.splash_page.Purple
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -34,12 +60,14 @@ import org.json.JSONObject
 import java.io.IOException
 
 @Composable
-fun TailorListPage(navController: NavHostController) {
+fun OrderSummaryPage(navController: NavHostController, backStackEntry: NavBackStackEntry) { // Add backStackEntry
+    val tailorId = backStackEntry.arguments?.getString("tailorId")?.toIntOrNull() ?: 0
     val tailors = remember { mutableStateOf<List<Tailor>>(emptyList()) }
 
+    // Fetch data from the API using the tailorId
     CoroutineScope(Dispatchers.IO).launch {
         try {
-            val response = fetchTailorsFromApi()
+            val response = fetchTailorsFromApi(tailorId) // Pass tailorId to function
             val data = parseJson(response)
             withContext(Dispatchers.Main) {
                 tailors.value = data
@@ -59,9 +87,28 @@ fun TailorListPage(navController: NavHostController) {
                 .height(650.dp)
         ) {
             items(tailors.value) { tailor ->
-//                TailorItem(tailor = tailor)
                 TailorItem(tailor = tailor, navController = navController)
                 Spacer(modifier = Modifier.height(16.dp))
+                Button(
+                    onClick = {
+                            navController.navigate(ShopCommercePage.PaymentMethodPage.route)
+                    },
+                    modifier = Modifier
+                        .padding(vertical = 16.dp)
+                        .fillMaxWidth()
+                        .height(50.dp),
+                    shape = RoundedCornerShape(10.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Purple)
+                ) {
+                    Text(
+                        text = "Add to Cart",
+                        color = Color.White,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center,
+                        fontFamily = FontFamily(Font(R.font.muli_bold))
+                    )
+                }
             }
         }
     }
@@ -141,10 +188,10 @@ data class Tailor(
     val imageUrl: String
 )
 
-suspend fun fetchTailorsFromApi(): String {
+suspend fun fetchTailorsFromApi(tailorId: Int): String { // Accept tailorId
     val client = OkHttpClient()
     val request = Request.Builder()
-        .url("https://stylosense-backend-service-kaya6rctvq-et.a.run.app/api/v1/tailors")
+        .url("https://stylosense-backend-service-kaya6rctvq-et.a.run.app/api/v1/tailors/$tailorId") // Use the provided tailorId
         .build()
     val response = client.newCall(request).execute()
     return response.body?.string() ?: ""
@@ -167,13 +214,18 @@ fun parseJson(json: String): List<Tailor> {
     }
     return tailors
 }
+
+//fun getTailorById(id: Int): Tailor? {
+//    return tailors.value.find { it.id == id }
+//}
+
 @Composable
 fun getTailorById(id: Int): Tailor? {
     val tailors = remember { mutableStateOf<List<Tailor>>(emptyList()) }
 
     CoroutineScope(Dispatchers.IO).launch {
         try {
-            val response = fetchTailorsFromApi()
+            val response = fetchTailorsFromApi(id)
             val data = parseJson(response)
             withContext(Dispatchers.Main) {
                 tailors.value = data
