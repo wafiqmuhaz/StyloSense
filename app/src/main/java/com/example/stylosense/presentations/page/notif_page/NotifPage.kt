@@ -1,4 +1,4 @@
-package com.example.stylosense.presentations.page.fav_page
+package com.example.stylosense.presentations.page.notif_page
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -25,8 +25,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.stylosense.R
 
+
 @Composable
-fun FavouritePage() {
+fun NotificationPage() {
     var itemDrag by remember { mutableStateOf(0f) }
 
     Column(

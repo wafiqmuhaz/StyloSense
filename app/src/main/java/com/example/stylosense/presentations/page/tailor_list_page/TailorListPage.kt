@@ -1,4 +1,4 @@
-package com.example.stylosense.presentations.page.chat_page
+package com.example.stylosense.presentations.page.tailor_list_page
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -6,13 +6,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -20,16 +17,23 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.stylosense.R
-import com.example.stylosense.presentations.page.splash_page.Purple
 
 @Preview
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ChatPage() {
+fun TailorListPage() {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Chat", color = Color.Black) },
+                title = { Text("Tailors") },
+                navigationIcon = {
+                    IconButton(onClick = { /* Handle back button click */ }) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_backward),
+                            contentDescription = "Back"
+                        )
+                    }
+                }
             )
         },
         bottomBar = {
@@ -41,19 +45,10 @@ fun ChatPage() {
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            Text(
-                text = "Your Chats",
-                modifier = Modifier
-                    .padding(horizontal = 16.dp, vertical = 16.dp)
-                    .fillMaxWidth(),
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Bold
-            )
-            LazyColumn(
-                modifier = Modifier.weight(1f)
-            ) {
-                items(chatData) { chat ->
-                    ChatItem(chat)
+            LocationCard()
+            LazyColumn(modifier = Modifier.weight(1f)) {
+                items(tailorsData) { tailor ->
+                    TailorItem(tailor)
                 }
             }
         }
@@ -61,13 +56,16 @@ fun ChatPage() {
 }
 
 @Composable
-fun ChatItem(chat: Chat) {
+fun LocationCard() {
+    fun String.toColor() = Color(android.graphics.Color.parseColor(this))
+    val orange = "F06400".toColor()
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp, horizontal = 16.dp)
-            .clickable { /* Handle chat item click */ },
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+            .padding(16.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer
+        )
     ) {
         Row(
             modifier = Modifier
@@ -75,55 +73,68 @@ fun ChatItem(chat: Chat) {
                 .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Image(
-                painter = painterResource(id = chat.profileImage),
-                contentDescription = "Profile Picture",
-                modifier = Modifier
-                    .size(48.dp)
-                    .clip(CircleShape)
+            Icon(
+                painter = painterResource(id = R.drawable.pinpoint_location),
+                contentDescription = "Location",
+                tint = orange
             )
-            Spacer(modifier = Modifier.width(16.dp))
-            Column(
-                modifier = Modifier.weight(1f)
-            ) {
-                Text(
-                    text = chat.name,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold
-                )
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = chat.message,
-                    fontSize = 14.sp,
-                    color = Color.Gray
-                )
-            }
-            Spacer(modifier = Modifier.width(16.dp))
-            Column(
-                horizontalAlignment = Alignment.End,
-                verticalArrangement = Arrangement.Top
-            ) {
-                Text(
-                    text = chat.date,
-                    fontSize = 12.sp,
-                    color = Color.Gray
-                )
-                Spacer(modifier = Modifier.height(4.dp))
-                if (chat.hasNewMessage) {
-                    Box(
-                        modifier = Modifier
-                            .size(8.dp)
-                            .background(Color.Red),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Icon(painter = painterResource(id = R.drawable.reddot), contentDescription = null)
-                    }
-                }
-            }
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                text = "My Location\nPark Hyatt, Jakarta Pusat",
+                color = Color.White
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Spacer(modifier = Modifier.weight(1f))
+            Icon(
+                painter = painterResource(id = R.drawable.dropdown),
+                contentDescription = "Dropdown",
+                tint = Color.White
+            )
         }
     }
 }
 
+@Composable
+fun TailorItem(tailor: Tailor) {
+    Card(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(vertical = 8.dp, horizontal = 16.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+
+                .padding(16.dp)
+        ) {
+            Image(
+                painter = painterResource(id = tailor.imageResourceId),
+                contentDescription = "Tailor Image",
+                modifier = Modifier.fillMaxSize()
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = tailor.name,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = tailor.services,
+                fontSize = 14.sp,
+                color = Color.Gray
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Row(
+                modifier = Modifier.fillMaxSize(),
+                horizontalArrangement = Arrangement.End
+            ) {
+//                RatingChip(rating = tailor.rating)
+            }
+        }
+    }
+}
 @Composable
 fun BottomNavigationBar() {
     Row(
@@ -173,13 +184,13 @@ fun BottomNavigationBar() {
         BottomNavigationBarItem(
             icon = {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_chats),
+                    painter = painterResource(id = R.drawable.chat_bubble_icon),
                     contentDescription = "Chats",
                     tint = Color.White
                 )
             },
-            text = { Text("Chats", color = Purple) },
-            selected = true,
+            text = { Text("Chats", color = Color.White) },
+            selected = false,
             onClick = { /* Handle chats click */ }
         )
         BottomNavigationBarItem(
@@ -212,38 +223,33 @@ fun BottomNavigationBarItem(
     ) {
         icon()
         Spacer(modifier = Modifier.height(4.dp))
-//        Text(text = text, color = if (selected) Color.White else Color.Gray)
     }
 }
 
-data class Chat(
+data class Tailor(
     val name: String,
-    val message: String,
-    val date: String,
-    val profileImage: Int,
-    val hasNewMessage: Boolean
+    val services: String,
+    val rating: Float,
+    val imageResourceId: Int
 )
 
-val chatData = listOf(
-    Chat(
-        name = "Penjahit A",
-        message = "you have a new message",
-        date = "02/04/2024",
-        profileImage = R.drawable.img_profile,
-        hasNewMessage = true
+val tailorsData = listOf(
+    Tailor(
+        name = "Penjahit A, Manggarai",
+        services = "vermak, jahit, gorden",
+        rating = 4.7f,
+        imageResourceId = R.drawable.tailorfoto
     ),
-    Chat(
-        name = "Penjahit A",
-        message = "you have a new message",
-        date = "02/04/2024",
-        profileImage = R.drawable.img_profile,
-        hasNewMessage = true
+    Tailor(
+        name = "Penjahit A, Manggarai",
+        services = "Vermak, Jahit, Gorden",
+        rating = 4.7f,
+        imageResourceId = R.drawable.tailorfoto
     ),
-    Chat(
-        name = "Penjahit A",
-        message = "you have a new message",
-        date = "02/04/2024",
-        profileImage = R.drawable.img_profile,
-        hasNewMessage = true
+    Tailor(
+        name = "Penjahit A, Manggarai",
+        services = "Vermak, Jahit, Gorden",
+        rating = 4.7f,
+        imageResourceId = R.drawable.tailorfoto
     )
 )

@@ -51,12 +51,6 @@ fun NavGraphBuilder.authNavigationGraph(navController: NavHostController, contex
             }
             SignInPage(navController = navController)
         }
-//        composable(AuthPage.ForgetPasswordScreen.route) {
-//            ForgetPasswordScreen(navController = navController)
-//        }
-//        composable(AuthPage.OTPScreen.route) {
-//            OTPScreen(navController = navController)
-//        }
         composable(AuthPage.SignUpPage.route) {
             SignUpPage(navController = navController)
         }

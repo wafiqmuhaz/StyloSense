@@ -13,7 +13,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.rememberNavController
 import com.example.stylosense.presentations.graph.root_graph.RootNavigationGraph
 import com.example.stylosense.ui.theme.StyloSenseTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

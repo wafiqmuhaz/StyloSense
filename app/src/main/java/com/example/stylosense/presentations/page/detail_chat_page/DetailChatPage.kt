@@ -1,4 +1,4 @@
-package com.example.stylosense.presentations.screen.detail_chat_screen
+package com.example.stylosense.presentations.page.detail_chat_page
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

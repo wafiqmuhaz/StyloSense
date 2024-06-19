@@ -1,4 +1,4 @@
-package com.example.stylosense.presentations.page.coming_soon_page
+package com.example.stylosense.presentations.page.detail_taylor_page.component
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,8 +9,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
+
 @Composable
-fun ComingSoonPage() {
+fun DetailTaylorPage() {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center

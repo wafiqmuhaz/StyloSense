@@ -1,4 +1,4 @@
-package com.example.stylosense.presentations.screen.activity_screen
+package com.example.stylosense.presentations.page.activity_page
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*

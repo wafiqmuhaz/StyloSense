@@ -5,6 +5,4 @@ sealed class AuthPage(val route: String) {
     object SignInPage : AuthPage("sign_in_screen")
     object SignUpPage : AuthPage("sign_up_screen")
     object SignInSuccessPage : AuthPage("sign_success")
-    object ForgetPasswordScreen : AuthPage("forget_password_screen")
-    object OTPScreen : AuthPage("otp_screen")
 }

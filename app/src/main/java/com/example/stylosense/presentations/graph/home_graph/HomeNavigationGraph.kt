@@ -7,7 +7,22 @@ import androidx.navigation.compose.composable
 import com.example.stylosense.presentations.graph.Graph
 import com.example.stylosense.presentations.graph.detail_graph.DetailPage
 import com.example.stylosense.presentations.graph.detail_graph.detailNavigationGraph
+import com.example.stylosense.presentations.page.chat_page.ChatPage
 import com.example.stylosense.presentations.page.dashboard_page.DashboardPage
+import com.example.stylosense.presentations.page.detail_taylor_page.component.DetailTaylorPage
+import com.example.stylosense.presentations.page.fav_page.FavouritePage
+import com.example.stylosense.presentations.page.laundry_page.LaundryPage
+import com.example.stylosense.presentations.page.ml_feature_page.FeaturePage
+import com.example.stylosense.presentations.page.ml_feature_page.FeaturePage2
+import com.example.stylosense.presentations.page.ml_feature_page.FeaturePage3
+import com.example.stylosense.presentations.page.ml_feature_page.FeaturePage4
+import com.example.stylosense.presentations.page.profile_page.ProfilePage
+import com.example.stylosense.presentations.page.profile_page.help_center_page.HelpCenterPage
+import com.example.stylosense.presentations.page.profile_page.profile_edit_user_page.EditProfilePage
+import com.example.stylosense.presentations.page.profile_page.profile_user_page.ProfileDetailPage
+import com.example.stylosense.presentations.page.profile_page.setting_page.SettingsPage
+import com.example.stylosense.presentations.page.tailor_list_page.TailorListPage
+import com.example.stylosense.presentations.page.taylor_page.TaylorPage
 
 
 @Composable
@@ -24,55 +39,55 @@ fun HomeNavigationGraph(navHostController: NavHostController) {
                 navHostController.navigate(DetailPage.TaylorDetailPage.route + "/${productId}")
             }
         }
-//        composable(ShopHomeScreen.TailorListScreen.route) {
-//            TailorListScreen()
-//        }
-//        composable(ShopHomeScreen.FavouriteScreen.route) {
-//            FavouriteScreen()
-//        }
-//        composable(ShopHomeScreen.ChatScreen.route) {
-//            ChatScreen()
-//        }
-//        composable(ShopHomeScreen.EditProfileScreen.route) {
-//            EditProfileScreen(navController = navHostController)
-//        }
-//        composable(ShopHomeScreen.ProfileDetailScreen.route) {
-//            ProfileDetailScreen(navController = navHostController)
-//        }
-//        composable(ShopHomeScreen.FeatureScreen.route) {
-//            FeatureScreen(navController = navHostController)
-//        }
-//        composable(ShopHomeScreen.SettingsScreen.route) {
-//            SettingsScreen()
-//        }
-//        composable(ShopHomeScreen.HelpCenterScreen.route) {
-//            HelpCenterScreen()
-//        }
-//        composable(ShopHomeScreen.ProfileScreen.route) {
-////            ProfileScreen() {
-////                navHostController.popBackStack()
-////            }
-//            ProfileScreen(navController = navHostController)
-//        }
-//        composable(ShopHomeScreen.FeatureScreen2.route) {
-//            FeatureScreen2(navController = navHostController)
-//        }
-//        composable(ShopHomeScreen.FeatureScreen3.route) {
-//            FeatureScreen3(navController = navHostController)
-//        }
-//        composable(ShopHomeScreen.FeatureScreen4.route) {
-//            FeatureScreen4(navController = navHostController)
-//        }
-//        //
-//        composable(ShopHomeScreen.TaylorScreen.route) {
-//            TaylorScreen()
-//        }
-//        composable(ShopHomeScreen.TaylorDetailScreen.route) {
-//            DetailTaylorScreen()
-//        }
-//        composable(ShopHomeScreen.LaundryScreen.route) {
-//            LaundryScreen()
-//        }
+        composable(ShopCommercePage.TailorListPage.route) {
+            TailorListPage()
+        }
+        composable(ShopCommercePage.FavouritePage.route) {
+            FavouritePage()
+        }
+        composable(ShopCommercePage.ChatPage.route) {
+            ChatPage()
+        }
+        composable(ShopCommercePage.EditProfilePage.route) {
+            EditProfilePage(navController = navHostController)
+        }
+        composable(ShopCommercePage.ProfileDetailPage.route) {
+            ProfileDetailPage(navController = navHostController)
+        }
+        composable(ShopCommercePage.FeaturePage.route) {
+            FeaturePage(navController = navHostController)
+        }
+        composable(ShopCommercePage.SettingsPage.route) {
+            SettingsPage()
+        }
+        composable(ShopCommercePage.HelpCenterPage.route) {
+            HelpCenterPage()
+        }
+        composable(ShopCommercePage.ProfilePage.route) {
+//            ProfilePage() {
+//                navHostController.popBackStack()
+//            }
+            ProfilePage(navController = navHostController)
+        }
+        composable(ShopCommercePage.FeaturePage2.route) {
+            FeaturePage2(navController = navHostController)
+        }
+        composable(ShopCommercePage.FeaturePage3.route) {
+            FeaturePage3(navController = navHostController)
+        }
+        composable(ShopCommercePage.FeaturePage4.route) {
+            FeaturePage4(navController = navHostController)
+        }
+        //
+        composable(ShopCommercePage.TaylorPage.route) {
+            TaylorPage()
+        }
+        composable(ShopCommercePage.TaylorDetailPage.route) {
+            DetailTaylorPage()
+        }
+        composable(ShopCommercePage.LaundryPage.route) {
+            LaundryPage()
+        }
 //        //detail graph
         detailNavigationGraph(navController = navHostController)
     }

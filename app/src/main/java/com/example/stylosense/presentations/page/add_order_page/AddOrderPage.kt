@@ -1,4 +1,4 @@
-package com.example.stylosense.presentations.screen.add_order_screen
+package com.example.stylosense.presentations.page.add_order_page
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*

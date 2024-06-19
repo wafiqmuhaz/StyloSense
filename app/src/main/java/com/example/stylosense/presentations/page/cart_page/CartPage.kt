@@ -1,4 +1,4 @@
-package com.example.stylosense.presentations.screen.cart_screen
+package com.example.stylosense.presentations.page.cart_page
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

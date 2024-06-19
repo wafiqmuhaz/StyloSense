@@ -1,4 +1,4 @@
-package com.example.stylosense.presentations.screen.activity_track_order_screen
+package com.example.stylosense.presentations.page.activity_track_order_page
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.stylosense.R
 

@@ -1,4 +1,4 @@
-package com.example.stylosense.presentations.page.coming_soon_page
+package com.example.stylosense.presentations.page.laundry_page
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,7 +10,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun ComingSoonPage() {
+fun LaundryPage() {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
