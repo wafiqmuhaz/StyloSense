@@ -36,6 +36,9 @@ sealed class ResourceApp<T>(
         is LoadingApp -> "Loading..."
         is SuccessApp -> message ?: "Success"
         is ErrorApp -> message ?: "An error occurred"
+        else -> {
+            "Unknown status"
+        }
     }
 
     fun getDataOrFallback(fallback: T): T = data ?: fallback

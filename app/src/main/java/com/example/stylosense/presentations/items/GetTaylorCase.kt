@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class GetProductUseCase @Inject constructor(
-    private val repository: ProductRepository
+    private val repository: TaylorRepository
 ) {
     operator fun invoke(): Flow<ResourceApp<List<TaylorModel>>> = flow {
         try {

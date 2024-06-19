@@ -10,7 +10,7 @@ import com.example.stylosense.presentations.graph.Graph
 fun NavGraphBuilder.detailNavigationGraph(navController: NavHostController) {
     navigation(
         route = Graph.DETAILS_GRAPH,
-        startDestination = DetailPage.ProductDetailPage.route + "/{${Const.PRODUCT_ID_PARAM}}"
+        startDestination = DetailPage.TaylorDetailPage.route + "/{${Const.PRODUCT_ID_PARAM}}"
     ) {
 //        composable(DetailPage.CartScreen.route) {
 //            CartScreen()

@@ -3,8 +3,11 @@ package com.example.stylosense.presentations.graph.home_graph
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import com.example.stylosense.presentations.graph.Graph
+import com.example.stylosense.presentations.graph.detail_graph.DetailPage
 import com.example.stylosense.presentations.graph.detail_graph.detailNavigationGraph
+import com.example.stylosense.presentations.page.dashboard_page.DashboardPage
 
 
 @Composable
@@ -12,15 +15,15 @@ fun HomeNavigationGraph(navHostController: NavHostController) {
     NavHost(
         navController = navHostController,
         route = Graph.HOME_GRAPH,
-        startDestination = ShopHomePage.DashboardPage.route
+        startDestination = ShopCommercePage.DashboardPage.route
     ) {
-//        composable(ShopHomeScreen.DashboardScreen.route) {
-//            DashboardScreen(
-//                navController = navHostController
-//            ) { productId ->
-//                navHostController.navigate(DetailScreen.ProductDetailScreen.route + "/${productId}")
-//            }
-//        }
+        composable(ShopCommercePage.DashboardPage.route) {
+            DashboardPage(
+                navController = navHostController
+            ) { productId ->
+                navHostController.navigate(DetailPage.TaylorDetailPage.route + "/${productId}")
+            }
+        }
 //        composable(ShopHomeScreen.TailorListScreen.route) {
 //            TailorListScreen()
 //        }

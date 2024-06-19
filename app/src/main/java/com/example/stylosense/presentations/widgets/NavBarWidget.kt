@@ -21,7 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.example.stylosense.presentations.graph.home_graph.ShopHomePage
+import com.example.stylosense.presentations.graph.home_graph.ShopCommercePage
 
 
 @Composable
@@ -66,7 +66,6 @@ fun NavBarWidgets(
                     onClick = {
                         navController.navigate(screen.route)
                     },
-//                    unselectedContentColor = MaterialTheme.colorScheme.background,
                 )
             }
         }
@@ -74,11 +73,11 @@ fun NavBarWidgets(
 
     //hide topBar
     when (navBackStackEntry?.destination?.route) {
-        ShopHomePage.DashboardPage.route -> {
+        ShopCommercePage.DashboardPage.route -> {
             bottomNavVisibility = true
             isVisible(true)
         }
-        ShopHomePage.FavouritePage.route -> {
+        ShopCommercePage.FavouritePage.route -> {
             bottomNavVisibility = true
             isVisible(true)
         }

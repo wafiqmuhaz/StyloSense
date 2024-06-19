@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.example.stylosense.R
 
 @Composable
-fun DefaultBackArrow(
+fun BackWidget(
     onClick: () -> Unit
 ) {
     Box(

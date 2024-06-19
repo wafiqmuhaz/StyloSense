@@ -2,7 +2,7 @@ package com.example.stylosense.presentations.items
 
 import javax.inject.Inject
 
-class GetProductDetailUseCase @Inject constructor(private val repository: ProductRepository) {
+class GetProductDetailUseCase @Inject constructor(private val repository: TaylorRepository) {
 //    operator fun invoke(productId: Int): Flow<Resource<ProductModel>> = flow {
 //        try {
 //            emit(Resource.Loading())

@@ -11,6 +11,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.example.stylosense.presentations.graph.Graph
+import com.example.stylosense.presentations.page.sign_up_page.SignUpPage
+import com.example.stylosense.presentations.page.sign_in_page.SignInPage
+import com.example.stylosense.presentations.page.sign_success_page.SignInSuccessPage
 import com.example.stylosense.presentations.page.splash_page.SplashPage
 
 
@@ -46,7 +49,7 @@ fun NavGraphBuilder.authNavigationGraph(navController: NavHostController, contex
                 }
 
             }
-//            LoginScreen(navController = navController)
+            SignInPage(navController = navController)
         }
 //        composable(AuthPage.ForgetPasswordScreen.route) {
 //            ForgetPasswordScreen(navController = navController)
@@ -54,12 +57,12 @@ fun NavGraphBuilder.authNavigationGraph(navController: NavHostController, contex
 //        composable(AuthPage.OTPScreen.route) {
 //            OTPScreen(navController = navController)
 //        }
-//        composable(AuthPage.SignUpScreen.route) {
-//            SignUpScreen(navController = navController)
-//        }
-//        composable(AuthPage.SignInSuccess.route) {
-//            SignInScreen(navController = navController)
-//        }
+        composable(AuthPage.SignUpPage.route) {
+            SignUpPage(navController = navController)
+        }
+        composable(AuthPage.SignInSuccessPage.route) {
+            SignInSuccessPage(navController = navController)
+        }
 
     }
 }

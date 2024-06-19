@@ -37,7 +37,7 @@ import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.stylosense.R
-import com.example.stylosense.presentations.graph.home_graph.ShopHomePage
+import com.example.stylosense.presentations.graph.home_graph.ShopCommercePage
 import com.example.stylosense.presentations.page.dashboard_page.view_model.DashboardViewModel
 
 
@@ -388,7 +388,7 @@ fun DashboardPage(
                         .width(150.dp)
                         .height(150.dp)
                         .clip(RoundedCornerShape(20.dp))
-                        .clickable { navController.navigate(ShopHomePage.LaundryPage.route) }
+                        .clickable { navController.navigate(ShopCommercePage.LaundryPage.route) }
                 ) {
                     //constrains
                     val (bannerText2, bannerImage2) = createRefs()
