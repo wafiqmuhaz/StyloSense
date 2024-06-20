@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -22,24 +23,25 @@ import androidx.compose.ui.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.stylosense.R
 import com.example.stylosense.presentations.graph.home_graph.ShopCommercePage
+import com.example.stylosense.presentations.widgets.DottedWidget
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FeaturePage(navController: NavHostController) {
+
+    val currentPosition = 0
+    val splashImageList = 2
+
     Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("Feature", color = Color.Black) },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.surface)
-            )
-        },
-//        bottomBar = {
-//            BottomNavigationBar()
-//        }
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -49,6 +51,12 @@ fun FeaturePage(navController: NavHostController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(300.dp)
+            ) {
+            }
             Text(
                 text = "Welcome to Our Feature!",
                 style = MaterialTheme.typography.headlineMedium,
@@ -62,104 +70,28 @@ fun FeaturePage(navController: NavHostController) {
             )
             Spacer(modifier = Modifier.height(16.dp))
             // Indicators (You can customize the color and style)
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Box(
-                    modifier = Modifier
-                        .size(8.dp)
-                        .background(colorScheme.primary)
-                        .background(
-                            MaterialTheme.colorScheme.primary,
-                            shape = CircleShape
-                        )
-                        .clip(CircleShape)
-//                        .shape(RoundedCornerShape(50))
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Box(
-                    modifier = Modifier
-                        .size(8.dp)
-                        .background(colorScheme.secondary)
-                        .background(
-                            MaterialTheme.colorScheme.primary,
-                            shape = CircleShape
-                        )
-                        .clip(CircleShape)
-//                        .shape(RoundedCornerShape(50))
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Box(
-                    modifier = Modifier
-                        .size(8.dp)
-                        .background(Color.Gray)
-                        .background(
-                            MaterialTheme.colorScheme.primary,
-                            shape = CircleShape
-                        )
-                        .clip(CircleShape)
-//                        .shape(RoundedCornerShape(50))
-                )
-            }
-            Spacer(modifier = Modifier.height(32.dp))
+            DottedWidget(splashImageList, currentPosition)
+            Spacer(modifier = Modifier.height(250.dp))
             Button(
                 onClick = {
                     navController.navigate(ShopCommercePage.FeaturePage2.route)
-                          },
-                modifier = Modifier.width(200.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF6200EE),
-                    contentColor = Color.White
-                )
+                },
+                modifier = Modifier
+                    .padding(vertical = 16.dp)
+                    .fillMaxWidth()
+                    .height(50.dp),
+                shape = RoundedCornerShape(10.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = com.example.stylosense.presentations.page.splash_page.Purple)
             ) {
-                Text("Next", style = MaterialTheme.typography.labelLarge)
+                Text(
+                    text = "Next",
+                    color = Color.White,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
+                    fontFamily = FontFamily(Font(R.font.muli_bold))
+                )
             }
         }
     }
 }
-
-//@Composable
-//fun BottomNavigationBar() {
-//    NavigationBar {
-//        NavigationBarItem(
-//            icon = { Icon(Icons.Filled.Home, contentDescription = "Home") },
-//            label = { Text("Home") },
-//            selected = false,
-//            onClick = { /* Handle Home click */ }
-//        )
-//        NavigationBarItem(
-//            icon = { Icon(Icons.Filled.List, contentDescription = "Activity") },
-//            label = { Text("Activity") },
-//            selected = false,
-//            onClick = { /* Handle Activity click */ }
-//        )
-//        NavigationBarItem(
-//            icon = { Icon(Icons.Filled.Star, contentDescription = "Feature") },
-//            label = { Text("Feature") },
-//            selected = true,
-//            onClick = { /* Handle Feature click */ }
-//        )
-//        NavigationBarItem(
-//            icon = { Icon(Icons.Filled.Chat, contentDescription = "Chats") },
-//            label = { Text("Chats") },
-//            selected = false,
-//            onClick = { /* Handle Chats click */ }
-//        )
-//        NavigationBarItem(
-//            icon = { Icon(Icons.Filled.Person, contentDescription = "Profile") },
-//            label = { Text("Profile") },
-//            selected = false,
-//            onClick = { /* Handle Profile click */ }
-//        )
-//    }
-//}
-
-////////
-
-//@Preview(showBackground = true)
-//@Composable
-//fun DefaultPreview() {
-//    FeatureScreen(
-//        navController = NavHostController()
-//    )
-//}

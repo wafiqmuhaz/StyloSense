@@ -93,7 +93,8 @@ fun DashboardPage(
             item {
                 ConstraintLayout(
                     modifier = Modifier
-                        .width(280.dp)
+                        .width(320.dp)
+                        .height(250.dp)
                         .clip(RoundedCornerShape(20.dp))
                 ) {
                     //constrains
@@ -101,7 +102,11 @@ fun DashboardPage(
                     Image(
                         painter = painterResource(id = R.drawable.image_banner_3),
                         contentDescription = "",
-                        modifier = Modifier.constrainAs(bannerImage) {}
+                        modifier = Modifier
+                        .constrainAs(bannerImage) {}
+                        .width(320.dp)
+                        .height(250.dp),
+                        contentScale = ContentScale.FillHeight
                     )
                     Column(
                         modifier = Modifier
@@ -133,7 +138,8 @@ fun DashboardPage(
                 //second item
                 ConstraintLayout(
                     modifier = Modifier
-                        .width(280.dp)
+                        .width(320.dp)
+                        .height(250.dp)
                         .clip(RoundedCornerShape(20.dp))
                 ) {
                     //constrains
@@ -142,6 +148,9 @@ fun DashboardPage(
                         painter = painterResource(id = R.drawable.image_banner_2),
                         contentDescription = "",
                         modifier = Modifier.constrainAs(bannerImage2) {}
+                            .width(320.dp)
+                            .height(250.dp),
+                        contentScale = ContentScale.FillHeight
                     )
                     Column(
                         modifier = Modifier
