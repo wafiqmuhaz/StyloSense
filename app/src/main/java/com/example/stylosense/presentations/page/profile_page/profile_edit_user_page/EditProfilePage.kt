@@ -85,7 +85,7 @@ fun EditProfilePage(navController: NavController) {
                     verticalArrangement = Arrangement.Center
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.img_profile),
+                        painter = painterResource(id = R.drawable.circle_photo),
                         contentDescription = "Profile Picture",
                         modifier = Modifier.size(100.dp)
                     )

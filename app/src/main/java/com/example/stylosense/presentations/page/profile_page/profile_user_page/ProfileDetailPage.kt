@@ -16,7 +16,6 @@ import androidx.navigation.NavController
 import com.example.stylosense.R
 import com.example.stylosense.presentations.graph.home_graph.ShopCommercePage
 
-
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter", "UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -115,7 +114,7 @@ fun ProfileDetailPage(navController: NavController) {
         ) {
             Spacer(modifier = Modifier.height(100.dp))
             Image(
-                painter = painterResource(id = R.drawable.img_profile),
+                painter = painterResource(id = R.drawable.circle_photo),
                 contentDescription = "Profile Picture",
                 modifier = Modifier.size(100.dp)
             )

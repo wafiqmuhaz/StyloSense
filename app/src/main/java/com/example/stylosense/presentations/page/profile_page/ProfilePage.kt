@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -32,10 +33,8 @@ import androidx.navigation.NavController
 import com.example.stylosense.R
 import com.example.stylosense.presentations.graph.home_graph.ShopCommercePage
 
-
 @Composable
 fun ProfilePage(
-//    onBackBtnClick: () -> Unit,
     navController: NavController
 ) {
     Column(
@@ -49,11 +48,6 @@ fun ProfilePage(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-//            Box(modifier = Modifier.weight(0.5f)) {
-//                DefaultBackArrow {
-//                    onBackBtnClick
-//                }
-//            }
             Box(modifier = Modifier.weight(0.7f)) {
                 Text(
                     text = "Profile",
@@ -71,10 +65,11 @@ fun ProfilePage(
         ) {
             val (image, cameraIcon) = createRefs()
             Image(
-                painter = painterResource(id = R.drawable.profile_image),
+                painter = painterResource(id = R.drawable.circle_photo),
                 contentDescription = "Profile Image",
                 modifier = Modifier
                     .clip(CircleShape)
+                    .size(100.dp)
                     .constrainAs(image) {
                         linkTo(start = parent.start, end = parent.end)
                     }
@@ -123,41 +118,7 @@ fun ProfilePage(
                 tint = MaterialTheme.colorScheme.background
             )
         }
-
         Spacer(modifier = Modifier.height(15.dp))
-
-
-//        Row(
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .height(70.dp)
-//
-//                .background(Color(0x8DB3B0B0), shape = RoundedCornerShape(10.dp))
-//                .clip(RoundedCornerShape(10.dp))
-//                .clickable {
-//                    navController.navigate(ShopHomePage.NotificationPage.route)
-//                }
-//                .padding(5.dp),
-//            horizontalArrangement = Arrangement.SpaceBetween,
-//            verticalAlignment = Alignment.CenterVertically
-//        ) {
-//            Icon(
-//                painter = painterResource(id = R.drawable.bell),
-//                contentDescription = null,
-//                modifier = Modifier.weight(0.05f), tint = MaterialTheme.colorScheme.primary
-//            )
-//            Text("Notification", modifier = Modifier.weight(0.2f))
-//            Icon(
-//                painter = painterResource(id = R.drawable.arrow_right),
-//                contentDescription = null,
-//                modifier = Modifier.weight(0.05f),
-//                tint = MaterialTheme.colorScheme.background
-//            )
-//        }
-
-
-        Spacer(modifier = Modifier.height(15.dp))
-
 
         Row(
             modifier = Modifier
@@ -186,16 +147,11 @@ fun ProfilePage(
                 tint = MaterialTheme.colorScheme.primary
             )
         }
-
-
         Spacer(modifier = Modifier.height(15.dp))
-
-
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(70.dp)
-
                 .background(Color(0x8DB3B0B0), shape = RoundedCornerShape(10.dp))
                 .clip(RoundedCornerShape(10.dp))
                 .clickable {
@@ -218,10 +174,7 @@ fun ProfilePage(
                 tint = MaterialTheme.colorScheme.primary
             )
         }
-
         Spacer(modifier = Modifier.height(15.dp))
-
-
         Row(
             modifier = Modifier
                 .fillMaxWidth()

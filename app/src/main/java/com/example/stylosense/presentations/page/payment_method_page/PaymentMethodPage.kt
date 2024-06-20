@@ -155,19 +155,19 @@ fun PaymentMethodOption(
             // Use appropriate image resource based on payment method
             if (paymentMethod == "Gopay") {
                 Image(
-                    painter = painterResource(id = R.drawable.bill_icon), // gopay_logo Replace with your actual resource ID
+                    painter = painterResource(id = R.drawable.gopay_logo), // gopay_logo Replace with your actual resource ID
                     contentDescription = "Gopay Logo",
                     modifier = Modifier.size(40.dp)
                 )
             } else if (paymentMethod == "BCA Virtual Account") {
                 Image(
-                    painter = painterResource(id = R.drawable.bill_icon), //bca_logo Replace with your actual resource ID
+                    painter = painterResource(id = R.drawable.bca_logo), //bca_logo Replace with your actual resource ID
                     contentDescription = "BCA Logo",
                     modifier = Modifier.size(40.dp)
                 )
             } else if (paymentMethod == "Mandiri Virtual Account") {
                 Image(
-                    painter = painterResource(id = R.drawable.bill_icon), // mandiri_logo Replace with your actual resource ID
+                    painter = painterResource(id = R.drawable.mandiri_logo), // mandiri_logo Replace with your actual resource ID
                     contentDescription = "Mandiri Logo",
                     modifier = Modifier.size(40.dp)
                 )

@@ -38,22 +38,22 @@ fun HomePage(
 
     Scaffold(
 //        scaffoldState = scaffoldState,
-        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
-        topBar = {
-            AppBarWidget(
-                navController = navController,
-                isVisible = topBarVisibilityState.value,
-                searchCharSequence = {
-
-                },
-                onCartIconClick = {
-//                    navController.navigate(DetailPage.CartScreen.route)
-                },
-                onNotificationIconClick = {
-//                    navController.navigate(DetailPage.NotificationScreen.route)
-                }
-            )
-        },
+//        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
+//        topBar = {
+//            AppBarWidget(
+//                navController = navController,
+//                isVisible = topBarVisibilityState.value,
+//                searchCharSequence = {
+//
+//                },
+//                onCartIconClick = {
+////                    navController.navigate(DetailPage.CartScreen.route)
+//                },
+//                onNotificationIconClick = {
+////                    navController.navigate(DetailPage.NotificationScreen.route)
+//                }
+//            )
+//        },
         bottomBar = {
             NavBarWidgets(navController = navController) { isVisible ->
                 topBarVisibilityState.value = isVisible
