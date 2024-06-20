@@ -8,9 +8,10 @@ import androidx.navigation.compose.composable
 import com.example.stylosense.presentations.graph.Graph
 import com.example.stylosense.presentations.graph.auth_graph.authNavigationGraph
 import com.example.stylosense.presentations.page.home_page.HomePage
+import com.example.stylosense.presentations.page.ml_feature_page.MainViewModel
 
 @Composable
-fun RootNavigationGraph(navHostController: NavHostController, context: Context) {
+fun RootNavigationGraph(mainViewModels: MainViewModel, navHostController: NavHostController, context: Context) {
     NavHost(
         navController = navHostController,
         route = Graph.ROOT_GRAPH,
@@ -18,7 +19,7 @@ fun RootNavigationGraph(navHostController: NavHostController, context: Context) 
     ) {
         authNavigationGraph(navHostController, context)
         composable(route = Graph.HOME_GRAPH) {
-            HomePage()
+            HomePage(mainViewModel = mainViewModels)
         }
     }
 }

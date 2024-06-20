@@ -17,6 +17,7 @@ import com.example.stylosense.presentations.page.ml_feature_page.FeaturePage
 import com.example.stylosense.presentations.page.ml_feature_page.FeaturePage2
 import com.example.stylosense.presentations.page.ml_feature_page.FeaturePage3
 import com.example.stylosense.presentations.page.ml_feature_page.FeaturePage4
+import com.example.stylosense.presentations.page.ml_feature_page.MainViewModel
 import com.example.stylosense.presentations.page.order_summery_page.OrderSummaryPage
 import com.example.stylosense.presentations.page.otp_page.OTPPage
 import com.example.stylosense.presentations.page.payment_method_page.PaymentMethodPage
@@ -33,7 +34,7 @@ import com.example.stylosense.presentations.page.track_order_page.TrackOrderPage
 
 
 @Composable
-fun HomeNavigationGraph(navHostController: NavHostController) {
+fun HomeNavigationGraph(viewModel: MainViewModel, navHostController: NavHostController) {
     NavHost(
         navController = navHostController,
         route = Graph.HOME_GRAPH,
@@ -77,10 +78,10 @@ fun HomeNavigationGraph(navHostController: NavHostController) {
             FeaturePage2(navController = navHostController)
         }
         composable(ShopCommercePage.FeaturePage3.route) {
-            FeaturePage3(navController = navHostController)
+            FeaturePage3(navController = navHostController, viewModel)
         }
         composable(ShopCommercePage.FeaturePage4.route) {
-            FeaturePage4(navController = navHostController)
+            FeaturePage4(viewModel)
         }
         //
         composable(ShopCommercePage.TaylorPage.route) {

@@ -15,8 +15,11 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -24,114 +27,40 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import coil.compose.rememberAsyncImagePainter
 import com.example.stylosense.R
 
-
 @Composable
-fun FeaturePage4(navController: NavHostController) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 16.dp)
-            .padding(top = 16.dp)
-    ) {
-        // Header
-        Text(
-            text = "Analysis",
-            fontWeight = FontWeight.Bold,
-            fontSize = 24.sp,
-            modifier = Modifier.padding(bottom = 16.dp)
-        )
+fun FeaturePage4(viewModel: MainViewModel) {
+    val response = viewModel.apiResponse
 
-        Text(
-            text = "Here's your results",
-            fontWeight = FontWeight.Bold,
-            fontSize = 20.sp,
-            modifier = Modifier.padding(bottom = 8.dp)
-        )
+    println("Responses Api: $response")
+    if (response != null) {
+        println("Responses prediction Api: ${response.prediction}")
+    }
 
-        // Results Content
-        LazyColumn(
-            modifier = Modifier.fillMaxWidth(),
-            contentPadding = PaddingValues(16.dp)
-        ) {
-            item {
-                ColorResultItem("Bright Red", "#FF0000")
-                ColorResultItem("Dark Brown", "#8B4513")
-                ColorResultItem("Bright Golden", "#FFD700")
-                ColorResultItem("Black", "#000000")
-            }
-
-            item {
-                Spacer(modifier = Modifier.height(16.dp))
-                Text(
-                    text = "These clothes should fit you best:",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp,
-                    modifier = Modifier.padding(bottom = 8.dp)
-                )
-
-                // Clothes suggestion images (replace with actual image resources)
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.phone), //placeholder),
-                        contentDescription = null,
-                        modifier = Modifier.size(80.dp)
-                    )
-                    Image(
-                        painter = painterResource(id = R.drawable.phone), //placeholder),
-                        contentDescription = null,
-                        modifier = Modifier.size(80.dp)
-                    )
-                    Image(
-                        painter = painterResource(id = R.drawable.phone), //placeholder),
-                        contentDescription = null,
-                        modifier = Modifier.size(80.dp)
-                    )
+    MaterialTheme {
+        Surface(modifier = Modifier.fillMaxSize()) {
+            Column(
+                verticalArrangement = Arrangement.Top,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.fillMaxSize().padding(16.dp)
+            ) {
+                response?.let {
+                    Text("Prediction: ${it.prediction ?: "N/A"}", fontSize = 20.sp, color = Color.Black)
+                    Spacer(modifier = Modifier.height(16.dp))
+                    it.bucketLinks?.forEach { link ->
+                        Image(
+                            painter = rememberAsyncImagePainter(link),
+                            contentDescription = "file",
+                            modifier = Modifier.size(100.dp)
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                    }
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text("Color Recommendations: ${it.colorRecommendation ?: "N/A"}", fontSize = 16.sp, color = Color.Black)
                 }
             }
         }
-
-        // Done Button
-        Button(
-            onClick = { /* Navigate back or complete action */ },
-            shape = RoundedCornerShape(50),
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp)
-                .height(48.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = Color.Cyan)
-        ) {
-            Text(text = "Done")
-        }
-
-        Spacer(modifier = Modifier.weight(1f))
-
-        // Bottom Navigation
-//        BottomNavigationBar(navController = navController)
-    }
-}
-
-@Composable
-fun ColorResultItem(colorName: String, colorHex: String) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 4.dp),
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        Text(
-            text = colorName,
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Medium
-        )
-        Text(
-            text = colorHex,
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Medium
-        )
     }
 }

@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.stylosense.presentations.graph.home_graph.HomeNavigationGraph
+import com.example.stylosense.presentations.page.ml_feature_page.MainViewModel
 import com.example.stylosense.presentations.widgets.AppBarWidget
 import com.example.stylosense.presentations.widgets.NavBarWidgets
 
@@ -25,6 +26,7 @@ import com.example.stylosense.presentations.widgets.NavBarWidgets
 fun HomePage(
     navController: NavHostController = rememberNavController(),
 //    scaffoldState: ScaffoldState = rememberScaffoldState(),
+    mainViewModel: MainViewModel,
     boxScrollState: ScrollState = rememberScrollState(),
 ) {
     val snackbarHostState: SnackbarHostState = remember { SnackbarHostState() }
@@ -64,7 +66,7 @@ fun HomePage(
                 .padding(padding)
                 .verticalScroll(boxScrollState)
         ) {
-            HomeNavigationGraph(navHostController = navController)
+            HomeNavigationGraph(viewModel = mainViewModel, navHostController = navController)
         }
     }
 }
