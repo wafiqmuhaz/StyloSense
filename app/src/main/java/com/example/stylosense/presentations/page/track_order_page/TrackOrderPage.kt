@@ -77,27 +77,25 @@ fun TrackOrderPage() {
     ) {
         Spacer(modifier = Modifier.height(20.dp))
         // Back Button
-        IconButton(onClick = { /* Handle Back button click */ }) {
-            Icon(
-                imageVector = Icons.Default.ArrowBack,
-                contentDescription = "Back"
-            )
-        }
         Spacer(modifier = Modifier.height(20.dp))
 
         // Title
         Text(
+            textAlign = TextAlign.Left,
             text = "Track Orders",
             style = MaterialTheme.typography.headlineMedium,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
         )
         Spacer(modifier = Modifier.height(16.dp))
 
         // Order Image
         Image(
-            painter = painterResource(id = R.drawable.image_banner_3), //ic_order_progress Replace with your actual resource ID
+            painter = painterResource(id = R.drawable.image_banner_3),
             contentDescription = "Order Progress",
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(300.dp),
+            contentScale = ContentScale.Crop
         )
         Spacer(modifier = Modifier.height(16.dp))
 

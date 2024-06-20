@@ -1,5 +1,6 @@
 package com.example.stylosense.presentations.page.order_summery_page
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -59,6 +60,7 @@ import okhttp3.Request
 import org.json.JSONObject
 import java.io.IOException
 
+@SuppressLint("CoroutineCreationDuringComposition")
 @Composable
 fun OrderSummaryPage(navController: NavHostController, backStackEntry: NavBackStackEntry) { // Add backStackEntry
     val tailorId = backStackEntry.arguments?.getString("tailorId")?.toIntOrNull() ?: 0

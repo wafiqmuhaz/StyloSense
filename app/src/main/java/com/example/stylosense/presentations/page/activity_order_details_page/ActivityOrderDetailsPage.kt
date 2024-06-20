@@ -1,5 +1,6 @@
 package com.example.stylosense.presentations.page.activity_order_details_page
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -61,6 +62,7 @@ import org.json.JSONObject
 import java.io.IOException
 
 
+@SuppressLint("CoroutineCreationDuringComposition")
 @Composable
 fun ActivityOrderDetailsPage(navController: NavHostController, backStackEntry: NavBackStackEntry) { // Add backStackEntry
     val tailorId = backStackEntry.arguments?.getString("tailorId")?.toIntOrNull() ?: 0
@@ -89,7 +91,15 @@ fun ActivityOrderDetailsPage(navController: NavHostController, backStackEntry: N
                 .height(650.dp)
         ) {
             items(tailors.value) { tailor ->
-                TailorItem(tailor = tailor, navController = navController)
+                Card (
+                    colors = CardDefaults.cardColors(
+                        Color(android.graphics.Color.parseColor("#FBFBFB"))
+                    ),
+                    elevation = CardDefaults.elevatedCardElevation(defaultElevation = 2.dp),
+                    shape = RoundedCornerShape(8.dp)
+                ) {
+                    TailorItem(tailor = tailor, navController = navController)
+                }
                 Spacer(modifier = Modifier.height(16.dp))
                 // Order Details
                 OrderSummaryItem(
@@ -126,7 +136,7 @@ fun ActivityOrderDetailsPage(navController: NavHostController, backStackEntry: N
                 Spacer(modifier = Modifier.width(22.dp))
 
                 // Additional Actions (e.g., Track Order)
-                Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = Modifier.height(140.dp))
 
                 Button(
                     onClick = {
@@ -183,6 +193,8 @@ fun OrderSummaryItem(
 @Composable
 fun TailorItem(tailor: Tailor, navController: NavHostController) {
     Card (
+        modifier = Modifier
+            .padding(12.dp),
         colors = CardDefaults.cardColors(
             Color.Gray
         ),
@@ -284,6 +296,7 @@ fun parseJson(json: String): List<Tailor> {
 //    return tailors.value.find { it.id == id }
 //}
 
+@SuppressLint("CoroutineCreationDuringComposition")
 @Composable
 fun getTailorById(id: Int): Tailor? {
     val tailors = remember { mutableStateOf<List<Tailor>>(emptyList()) }

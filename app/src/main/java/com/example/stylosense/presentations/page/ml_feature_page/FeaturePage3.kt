@@ -14,15 +14,19 @@ import androidx.camera.core.ImageCaptureException
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -34,9 +38,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -47,6 +57,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
+import com.example.stylosense.R
 import com.example.stylosense.presentations.graph.home_graph.ShopCommercePage
 import com.google.gson.annotations.SerializedName
 import kotlinx.coroutines.launch
@@ -146,26 +157,83 @@ fun FeaturePage3(navController: NavHostController, viewModel: MainViewModel) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.fillMaxSize().padding(16.dp)
             ) {
-                selectedImageUri?.let { uri ->
-                    Image(
-                        painter = rememberAsyncImagePainter(uri),
-                        contentDescription = null,
-                        modifier = Modifier.size(200.dp)
-                    )
+                Spacer(modifier = Modifier.height(26.dp))
+                Text(
+                    text = "Let us help you find your colors based on your skin tone.",
+                    style = MaterialTheme.typography.bodyLarge,
+                    textAlign = TextAlign.Start,
+                )
+                Spacer(modifier = Modifier.height(32.dp))
+//                selectedImageUri?.let { uri ->
+//                    Image(
+//                        painter = rememberAsyncImagePainter(uri),
+//                        contentDescription = null,
+//                        modifier = Modifier
+////                            .size(400.dp)
+//                            .height(450.dp)
+//                            .fillMaxWidth()
+//                            .clip(RoundedCornerShape(22.dp)),
+//                        contentScale = ContentScale.FillHeight
+//                    )
+//                }
+                Box(
+                    modifier = Modifier
+                        .height(450.dp)
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(22.dp))
+                        .background(Color.Gray)
+                ) {
+                    selectedImageUri?.let { uri ->
+                        Image(
+                            painter = rememberAsyncImagePainter(uri),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .height(450.dp)
+                                .fillMaxWidth()
+                                .clip(RoundedCornerShape(22.dp)),
+                            contentScale = ContentScale.FillHeight
+                        )
+                    }
                 }
                 Spacer(modifier = Modifier.height(16.dp))
-                Button(onClick = {
-                    imagePickerLauncher.launch("image/*")
-                }) {
-                    Text("Pilih Gambar")
+                Button(
+                    modifier = Modifier
+                        .padding(vertical = 16.dp)
+                        .fillMaxWidth()
+                        .height(50.dp),
+                    shape = RoundedCornerShape(10.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = com.example.stylosense.presentations.page.splash_page.Purple),
+                    onClick = {
+                        imagePickerLauncher.launch("image/*")
+                    }) {
+                    Text("Choose Image",
+                        color = Color.White,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center,
+                        fontFamily = FontFamily(Font(R.font.muli_bold))
+                    )
                 }
                 Spacer(modifier = Modifier.height(16.dp))
                 selectedImageUri?.let { uri ->
                     Button(onClick = {
                         viewModel.uploadImage(uri, navController)
                         navController.navigate(ShopCommercePage.FeaturePage4.route)
-                    }) {
-                        Text("Unggah dan Prediksi")
+                    },
+                        modifier = Modifier
+                            .padding(vertical = 16.dp)
+                            .fillMaxWidth()
+                            .height(50.dp),
+                        shape = RoundedCornerShape(10.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = com.example.stylosense.presentations.page.splash_page.Purple)
+                    ) {
+                        Text("Upload and Predict",
+                            color = Color.White,
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold,
+                            textAlign = TextAlign.Center,
+                            fontFamily = FontFamily(Font(R.font.muli_bold))
+                        )
                     }
                 }
             }
@@ -182,72 +250,3 @@ fun createTempFileFromUri(uri: Uri, context: Context): File {
     }
     return tempFile
 }
-
-//@Composable
-//fun FeaturePage3(navController: NavHostController) {
-//    val lensFacing = CameraSelector.LENS_FACING_BACK
-//    val lifecycleOwner = LocalLifecycleOwner.current
-//    val context = LocalContext.current
-////    val preview = Preview.Builder().build() //Builder().build()
-//    val previewView = remember {
-//        PreviewView(context)
-//    }
-//    val cameraxSelector = CameraSelector.Builder().requireLensFacing(lensFacing).build()
-//    val imageCapture = remember {
-//        ImageCapture.Builder().build()
-//    }
-//    LaunchedEffect(lensFacing) {
-//        val cameraProvider = context.getCameraProvider()
-//        cameraProvider.unbindAll()
-//        cameraProvider.bindToLifecycle(lifecycleOwner, cameraxSelector,
-////            preview,
-//            imageCapture)
-////        preview.setSurfaceProvider(previewView.surfaceProvider)
-//    }
-//    Box(contentAlignment = Alignment.BottomCenter, modifier = Modifier.fillMaxSize()) {
-//        AndroidView({ previewView }, modifier = Modifier.fillMaxSize())
-//        Button(onClick = { captureImage(imageCapture, context) }) {
-//            Text(text = "Capture Image")
-//        }
-//    }
-//}
-//
-//private fun captureImage(imageCapture: ImageCapture, context: Context) {
-//    val name = "CameraxImage.jpeg"
-//    val contentValues = ContentValues().apply {
-//        put(MediaStore.MediaColumns.DISPLAY_NAME, name)
-//        put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
-//        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
-//            put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/CameraX-Image")
-//        }
-//    }
-//    val outputOptions = ImageCapture.OutputFileOptions
-//        .Builder(
-//            context.contentResolver,
-//            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-//            contentValues
-//        )
-//        .build()
-//    imageCapture.takePicture(
-//        outputOptions,
-//        ContextCompat.getMainExecutor(context),
-//        object : ImageCapture.OnImageSavedCallback {
-//            override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-//                println("Successs")
-//            }
-//
-//            override fun onError(exception: ImageCaptureException) {
-//                println("Failed $exception")
-//            }
-//
-//        })
-//}
-//
-//private suspend fun Context.getCameraProvider(): ProcessCameraProvider =
-//    suspendCoroutine { continuation ->
-//        ProcessCameraProvider.getInstance(this).also { cameraProvider ->
-//            cameraProvider.addListener({
-//                continuation.resume(cameraProvider.get())
-//            }, ContextCompat.getMainExecutor(this))
-//        }
-//    }
