@@ -2,7 +2,6 @@ package com.example.stylosense.presentations.page.sign_in_page
 
 import android.util.Patterns
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -14,10 +13,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Checkbox
-import androidx.compose.material3.CheckboxDefaults
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -28,14 +26,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -44,24 +39,18 @@ import com.example.stylosense.presentations.graph.auth_graph.AuthPage
 import com.example.stylosense.presentations.widgets.BackWidget
 import com.example.stylosense.presentations.widgets.BtnWidget
 import com.example.stylosense.presentations.widgets.ErrorWidget
-import com.example.stylosense.presentations.widgets.FieldWidget
 
 
 @Composable
 fun SignInPage(navController: NavController) {
     var email by remember { mutableStateOf(TextFieldValue("")) }
     var password by remember { mutableStateOf(TextFieldValue("")) }
-    var checkBox by remember {
-        mutableStateOf(false)
-    }
     val emailErrorState = remember {
         mutableStateOf(false)
     }
     val passwordErrorState = remember {
         mutableStateOf(false)
     }
-
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -81,42 +70,41 @@ fun SignInPage(navController: NavController) {
                 }
             }
             Box(modifier = Modifier.weight(1.0f)) {
-                Text(text = "Sign in", color = MaterialTheme.colorScheme.outline, fontSize = 18.sp)
+                Text(text = "Login", color = MaterialTheme.colorScheme.outline, fontSize = 18.sp)
             }
-
-
         }
+        Spacer(modifier = Modifier.height(45.dp))
+        Image(
+            painter = painterResource(id = R.drawable.ilustrator_tailor),
+            contentDescription = "Ilustration",
+            modifier = Modifier.size(200.dp)
+        )
         Spacer(modifier = Modifier.height(35.dp))
         Text(text = "Let's Get You Back in!", fontSize = 26.sp, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(20.dp))
         Text(
-            text = "Sign in with your email or password\nor continue with social media.",
+            text = "Enter your credentials.",
             color = MaterialTheme.colorScheme.outline,
             textAlign = TextAlign.Center
         )
-        Spacer(modifier = Modifier.height(50.dp))
-        FieldWidget(
-            placeholder = "example@email.com",
-            trailingIcon = R.drawable.mail,
-            label = "Email",
-            errorState = emailErrorState,
-            keyboardType = KeyboardType.Email,
-            visualTransformation = VisualTransformation.None,
-            onChanged = { newEmail ->
-                email = newEmail
-            }
+        Spacer(modifier = Modifier.height(30.dp))
+        // Email Input Field
+        OutlinedTextField(
+            value = email,
+            onValueChange = { email = it },
+            label = { Text("Email") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
         )
-        Spacer(modifier = Modifier.height(20.dp))
-        FieldWidget(
-            placeholder = "********",
-            trailingIcon = R.drawable.lock,
-            label = "Password",
-            keyboardType = KeyboardType.Password,
-            errorState = passwordErrorState,
-            visualTransformation = PasswordVisualTransformation(),
-            onChanged = { newPass ->
-                password = newPass
-            }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Password Input Field
+        OutlinedTextField(
+            value = password,
+            onValueChange = { password = it },
+            label = { Text("Password") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            visualTransformation = PasswordVisualTransformation()
         )
         Spacer(modifier = Modifier.height(10.dp))
         if (emailErrorState.value) {
@@ -127,33 +115,7 @@ fun SignInPage(navController: NavController) {
                 ErrorWidget("Please enter valid password.")
             }
         }
-//        Row(
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .padding(top = 15.dp),
-//            verticalAlignment = Alignment.CenterVertically,
-//            horizontalArrangement = Arrangement.SpaceBetween
-//        ) {
-//
-//            Row(verticalAlignment = Alignment.CenterVertically) {
-//                Checkbox(
-//                    checked = checkBox, onCheckedChange = {
-//                        checkBox = it
-//                    },
-//                    colors = CheckboxDefaults.colors(checkedColor = MaterialTheme.colorScheme.primary)
-//                )
-//                Text(text = "Remember me", color = MaterialTheme.colorScheme.outline, fontSize = 14.sp)
-//            }
-//            Text(
-//                text = "Forget Password",
-//                color = MaterialTheme.colorScheme.outline,
-//                style = TextStyle(textDecoration = TextDecoration.Underline),
-//                modifier = Modifier.clickable {
-//                    navController.navigate(AuthPage.ForgetPasswordScreen.route)
-//                }
-//            )
-//        }
-        BtnWidget(shapeSize = 50f, btnText = "Continue") {
+        BtnWidget(shapeSize = 50f, btnText = "Login") {
             //email pattern
             val pattern = Patterns.EMAIL_ADDRESS
             val isEmailValid = pattern.matcher(email.text).matches()
@@ -164,28 +126,19 @@ fun SignInPage(navController: NavController) {
                 navController.navigate(AuthPage.SignInSuccessPage.route)
             }
         }
-        Column(
+        Row(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(bottom = 40.dp),
-            verticalArrangement = Arrangement.Bottom
+                .fillMaxWidth()
+                .padding(top = 30.dp),
+            horizontalArrangement = Arrangement.Center
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 30.dp),
-                horizontalArrangement = Arrangement.Center
-            ) {
-                Text(text = "Don't have an account? ", color = Color.Black)
-                Text(
-                    text = "Sign Up",
-                    color = Color.Blue,
-                    modifier = Modifier.clickable {
-                        navController.navigate(AuthPage.SignUpPage.route)
-                    })
-            }
+            Text(text = "Don't have an account? ", color = Color.Black)
+            Text(
+                text = "Sign up here!",
+                color = Color.Blue,
+                modifier = Modifier.clickable {
+                    navController.navigate(AuthPage.SignUpPage.route)
+                })
         }
-
-
     }
 }
