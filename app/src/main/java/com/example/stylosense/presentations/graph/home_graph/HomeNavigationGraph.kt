@@ -1,12 +1,20 @@
 package com.example.stylosense.presentations.graph.home_graph
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.lifecycle.*
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.stylosense.presentations.detail_chat_taylor_page.DetailChatTaylorPage
 import com.example.stylosense.presentations.graph.Graph
 import com.example.stylosense.presentations.graph.detail_graph.DetailPage
 import com.example.stylosense.presentations.graph.detail_graph.detailNavigationGraph
+import com.example.stylosense.presentations.model.ChatViewModel
 import com.example.stylosense.presentations.page.activity_order_details_page.ActivityOrderDetailsPage
 import com.example.stylosense.presentations.page.chat_page.ChatPage
 import com.example.stylosense.presentations.page.dashboard_page.DashboardPage
@@ -32,9 +40,10 @@ import com.example.stylosense.presentations.page.tailor_list_page.getTailorById
 import com.example.stylosense.presentations.page.taylor_page.TaylorPage
 import com.example.stylosense.presentations.page.track_order_page.TrackOrderPage
 
-
 @Composable
 fun HomeNavigationGraph(viewModel: MainViewModel, navHostController: NavHostController) {
+    val viewModelStoreOwner = LocalViewModelStoreOwner.current
+
     NavHost(
         navController = navHostController,
         route = Graph.HOME_GRAPH,
@@ -54,7 +63,19 @@ fun HomeNavigationGraph(viewModel: MainViewModel, navHostController: NavHostCont
             FavouritePage(navController = navHostController)
         }
         composable(ShopCommercePage.ChatPage.route) {
-            ChatPage()
+            ChatPage(navController = navHostController)
+        }
+        viewModelStoreOwner?.let { owner ->
+            composable(
+                ShopCommercePage.DetailChatTaylorPage.route
+//                "detail_chat_taylor_screen"
+            ) {
+                val chatViewModel: ChatViewModel = viewModel(
+                    modelClass = ChatViewModel::class.java,
+                    viewModelStoreOwner = owner
+                )
+                DetailChatTaylorPage(modifier = Modifier.padding(), chatViewModel)
+            }
         }
         composable(ShopCommercePage.EditProfilePage.route) {
             EditProfilePage(navController = navHostController)
@@ -83,7 +104,6 @@ fun HomeNavigationGraph(viewModel: MainViewModel, navHostController: NavHostCont
         composable(ShopCommercePage.FeaturePage4.route) {
             FeaturePage4(viewModel)
         }
-        //
         composable(ShopCommercePage.TaylorPage.route) {
             TaylorPage()
         }
@@ -102,7 +122,6 @@ fun HomeNavigationGraph(viewModel: MainViewModel, navHostController: NavHostCont
                 ActivityOrderDetailsPage(navController = navHostController, backStackEntry)
             }
         }
-
         composable("summary/{tailorId}") { backStackEntry ->
             val tailorId = backStackEntry.arguments?.getString("tailorId")
             if (tailorId != null) {
@@ -119,9 +138,8 @@ fun HomeNavigationGraph(viewModel: MainViewModel, navHostController: NavHostCont
             SuccessPaymentPage(navController = navHostController)
         }
         composable(ShopCommercePage.OTPPage.route) {
-            OTPPage(navController = navHostController) //
+            OTPPage(navController = navHostController)
         }
-//        //detail graph
         detailNavigationGraph(navController = navHostController)
     }
 }

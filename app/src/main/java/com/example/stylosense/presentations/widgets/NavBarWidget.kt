@@ -86,10 +86,10 @@ fun NavBarWidgets(
 //            bottomNavVisibility = false
 //            isVisible(false)
 //        }
-//        DetailScreen.CartScreen.route -> {
-//            bottomNavVisibility = false
-//            isVisible(false)
-//        }
+            ShopCommercePage.DetailChatTaylorPage.route -> {
+                bottomNavVisibility = false
+                isVisible(false)
+            }
 //        DetailScreen.NotificationScreen.route -> {
 //            bottomNavVisibility = false
 //            isVisible(false)
@@ -99,6 +99,5 @@ fun NavBarWidgets(
             isVisible(false)
         }
     }
-
 
 }

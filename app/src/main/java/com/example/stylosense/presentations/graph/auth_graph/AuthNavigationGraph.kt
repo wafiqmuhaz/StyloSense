@@ -54,6 +54,9 @@ fun NavGraphBuilder.authNavigationGraph(navController: NavHostController, contex
         composable(AuthPage.SignUpPage.route) {
             SignUpPage(navController = navController)
         }
+        composable(AuthPage.SplashPage.route) {
+            SplashPage(navController = navController)
+        }
         composable(AuthPage.SignInSuccessPage.route) {
             SignInSuccessPage(navController = navController)
         }

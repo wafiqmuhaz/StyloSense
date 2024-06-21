@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -48,6 +49,7 @@ import com.example.stylosense.R
 import com.example.stylosense.presentations.graph.auth_graph.AuthPage
 import com.example.stylosense.presentations.page.splash_page.Purple
 import com.example.stylosense.presentations.page.tailor_list_page.Tailor
+import com.example.stylosense.ui.theme.Purple80
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -137,7 +139,13 @@ fun TailorItem(tailor: Tailor, navController: NavHostController) {
                         modifier = Modifier.padding(bottom = 4.dp)
                     )
                     Row {
-                        Icons.Default.Info
+                        Icon(
+                            imageVector = Icons.Default.Info,
+                            contentDescription = null,
+                            tint = Color(0xFFF06400), //
+                            modifier = Modifier.size(22.dp)
+                        )
+                        Spacer(modifier = Modifier.width(6.dp))
                         Text(
                             text = "Ongoing",
                             style = MaterialTheme.typography.bodyMedium,

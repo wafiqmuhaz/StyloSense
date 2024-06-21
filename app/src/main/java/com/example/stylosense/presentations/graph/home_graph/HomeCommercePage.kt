@@ -25,6 +25,8 @@ sealed class ShopCommercePage(val route: String) {
     object TaylorPage : ShopCommercePage("taylor_screen")
     object TrackOrderPage : ShopCommercePage("track_order_screen")
 
+    object DetailChatTaylorPage : ShopCommercePage("detail_chat_taylor_screen")
+
     object LaundryPage : ShopCommercePage("laundry_screen")
     object TaylorDetailPage : ShopCommercePage("detail_taylor")
 

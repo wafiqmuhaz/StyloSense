@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
 import com.example.stylosense.R
+import com.example.stylosense.presentations.graph.auth_graph.AuthPage
 import com.example.stylosense.presentations.graph.home_graph.ShopCommercePage
 
 @Composable
@@ -69,7 +70,7 @@ fun ProfilePage(
                 contentDescription = "Profile Image",
                 modifier = Modifier
                     .clip(CircleShape)
-                    .size(100.dp)
+                    .size(250.dp)
                     .constrainAs(image) {
                         linkTo(start = parent.start, end = parent.end)
                     }
@@ -128,7 +129,7 @@ fun ProfilePage(
                 .background(Color(0x8DB3B0B0), shape = RoundedCornerShape(10.dp))
                 .clip(RoundedCornerShape(10.dp))
                 .clickable {
-                    navController.navigate(ShopCommercePage.SettingsPage.route)
+//                    navController.navigate(ShopCommercePage.SettingsPage.route)
                 }
                 .padding(5.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -155,7 +156,7 @@ fun ProfilePage(
                 .background(Color(0x8DB3B0B0), shape = RoundedCornerShape(10.dp))
                 .clip(RoundedCornerShape(10.dp))
                 .clickable {
-                    navController.navigate(ShopCommercePage.HelpCenterPage.route)
+//                    navController.navigate(ShopCommercePage.HelpCenterPage.route)
                 }
                 .padding(5.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -182,7 +183,7 @@ fun ProfilePage(
                 .background(Color(0x8DB3B0B0), shape = RoundedCornerShape(10.dp))
                 .clip(RoundedCornerShape(10.dp))
                 .clickable {
-
+                    navController.navigate(ShopCommercePage.DashboardPage.route)
                 }
                 .padding(5.dp),
             horizontalArrangement = Arrangement.SpaceBetween,

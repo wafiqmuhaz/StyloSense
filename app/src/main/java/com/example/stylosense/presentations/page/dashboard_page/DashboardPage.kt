@@ -190,123 +190,6 @@ fun DashboardPage(
 
         Spacer(modifier = Modifier.height(8.dp))
 
-
-        //popular product
-//        LazyRow(
-//            state = suggestionProductState,
-//            horizontalArrangement = Arrangement.SpaceEvenly, //Arrangement.spacedBy(10.dp),
-//            contentPadding = PaddingValues(horizontal = 10.dp)
-//        ) {
-//            items(state.product!!.size) {
-//
-//                //favourite state rememberable
-//                var favouriteRemember by remember { mutableStateOf(state.product[it].isFavourite) }
-//
-//                Column {
-//                    Box(
-//                        modifier = Modifier
-//                            .size(150.dp)
-//                            .background(Color.LightGray, shape = RoundedCornerShape(10.dp))
-//                            .clip(RoundedCornerShape(10.dp))
-//                            .clickable {
-//                                onItemClick(state.product[it].id)
-//                            },
-//                        contentAlignment = Alignment.Center
-//                    ) {
-//                        Image(
-//                            painter = painterResource(id = state.product[it].images[0]),
-//                            contentDescription = state.product[it].description
-//                        )
-//                    }
-//                    Text(
-//                        text = state.product[it].title,
-//                        maxLines = 2,
-//                        overflow = TextOverflow.Ellipsis,
-//                        modifier = Modifier.width(150.dp)
-//                    )
-//
-//
-//                    Row(
-//                        modifier = Modifier
-//                            .width(150.dp)
-//                            .fillMaxWidth(),
-//                        horizontalArrangement = Arrangement.SpaceBetween
-//                    ) {
-//                        Text(
-//                            text = "$ ${state.product[it].price}",
-//                            fontWeight = FontWeight(600),
-//                            color = MaterialTheme.colorScheme.primary
-//                        )
-//                        Box(
-//                            modifier = Modifier
-//                                .size(20.dp)
-//                                .background(
-//                                    MaterialTheme.colorScheme.primary,
-//                                    shape = CircleShape
-//                                )
-//                                .clip(CircleShape)
-//                                .clickable {
-//                                    favouriteRemember = !favouriteRemember
-//                                },
-//                            contentAlignment = Alignment.Center
-//                        ) {
-//
-//                            Image(
-//                                painter = painterResource(
-//                                    id = if (favouriteRemember)
-//                                        R.drawable.heart_icon_2
-//                                    else R.drawable.heart_icon
-//                                ),
-//                                contentDescription = "Favourite Icon",
-//                                modifier = Modifier.padding(3.dp),
-//                                colorFilter = if (favouriteRemember) ColorFilter.tint(
-//                                    Color.Red
-//                                ) else null
-//                            )
-//                        }
-//                    }
-//
-//                }
-//            }
-//        }
-
-        //
-
-
-//        Box(
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .padding(8.dp)
-//                .clickable { navController.navigate("taylor_screen") }
-//                .padding(16.dp)
-//                .background(Color.Blue)
-//        ) {
-//            Text(
-//                text = "Taylor",
-//                fontSize = 20.sp,
-//                fontWeight = FontWeight.Bold,
-//                color = Color.Black
-//            )
-//        }
-
-//
-//        Box(
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .padding(8.dp)
-//                .clickable { navController.navigate("laundry") }
-//                .padding(16.dp)
-//                .background(MaterialTheme.colorScheme.primary)
-//        ) {
-//            Text(
-//                text = "Laundry",
-//                fontSize = 20.sp,
-//                fontWeight = FontWeight.Bold,
-//                color = MaterialTheme.colorScheme.onPrimary
-//            )
-//        }
-        //
-
         LazyRow(
             modifier = Modifier
                 .fillMaxSize()
@@ -359,22 +242,6 @@ fun DashboardPage(
                 }
             }
 
-//            Box(
-//                modifier = Modifier
-//                    .weight(1f)
-//                    .padding(8.dp)
-//                    .background(Color.Blue)
-//                    .clickable { navController.navigate(ShopHomeScreen.TaylorScreen.route) }
-//                    .padding(16.dp)
-//            ) {
-//                Text(
-//                    text = "Taylor",
-//                    fontSize = 20.sp,
-//                    fontWeight = FontWeight.Bold,
-//                    color = Color.White
-//                )
-//            }
-
             item {
                 //second item
                 ConstraintLayout(
@@ -416,21 +283,6 @@ fun DashboardPage(
                 }
             }
 
-//            Box(
-//                modifier = Modifier
-//                    .weight(1f)
-//                    .padding(8.dp)
-//                    .background(Color.Blue)
-//                    .clickable { navController.navigate(ShopHomeScreen.LaundryScreen.route) }
-//                    .padding(16.dp)
-//            ) {
-//                Text(
-//                    text = "Laundry",
-//                    fontSize = 20.sp,
-//                    fontWeight = FontWeight.Bold,
-//                    color = Color.White
-//                )
-//            }
         }
     }
 }

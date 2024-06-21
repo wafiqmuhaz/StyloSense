@@ -47,6 +47,25 @@ fun SuccessPaymentPage(navController: NavHostController) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        Spacer(modifier = Modifier.height(200.dp))
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(60.dp)
+                    .background(Color(0xFF9C27B0), CircleShape)
+            )
+            Box(
+                modifier = Modifier
+                    .size(60.dp)
+                    .background(Color(0xFF9C27B0), CircleShape)
+            )
+        }
         // Checkmark Icon
         Image(
             painter = painterResource(id = R.drawable.success), //ic_check_circle Replace with your actual resource ID
@@ -84,13 +103,14 @@ fun SuccessPaymentPage(navController: NavHostController) {
                     .background(Color(0xFF9C27B0), CircleShape)
             )
         }
-
+        Spacer(modifier = Modifier.height(100.dp))
         Button(
             onClick = {
                 navController.navigate(ShopCommercePage.DashboardPage.route)
             },
             modifier = Modifier
                 .padding(vertical = 16.dp)
+                .padding(horizontal = 20.dp)
                 .fillMaxWidth()
                 .height(50.dp),
             shape = RoundedCornerShape(10.dp),

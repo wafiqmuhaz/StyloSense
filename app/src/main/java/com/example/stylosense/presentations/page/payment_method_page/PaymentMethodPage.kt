@@ -94,6 +94,7 @@ fun PaymentMethodPage(navController: NavHostController) {
                 .padding(horizontal = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Spacer(modifier = Modifier.height(120.dp))
             Text(
                 text = "Total Payment",
                 style = MaterialTheme.typography.bodyLarge
@@ -103,7 +104,7 @@ fun PaymentMethodPage(navController: NavHostController) {
                 style = MaterialTheme.typography.headlineMedium,
                 fontWeight = FontWeight.Bold
             )
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(200.dp))
 
             Button(
                 onClick = {
@@ -116,6 +117,7 @@ fun PaymentMethodPage(navController: NavHostController) {
                 shape = RoundedCornerShape(10.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Purple)
             ) {
+                Spacer(Modifier.width(120.dp))
                 Text(
                     text = "Pay",
                     color = Color.White,
@@ -124,7 +126,7 @@ fun PaymentMethodPage(navController: NavHostController) {
                     textAlign = TextAlign.Center,
                     fontFamily = FontFamily(Font(R.font.muli_bold))
                 )
-                Spacer(Modifier.width(25.dp))
+                Spacer(Modifier.width(120.dp))
                 Icon(
                     imageVector = Icons.Default.ArrowForward,
                     contentDescription = "Next",

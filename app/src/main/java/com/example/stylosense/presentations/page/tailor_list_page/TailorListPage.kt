@@ -3,6 +3,8 @@ package com.example.stylosense.presentations.page.tailor_list_page
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,6 +17,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -67,9 +71,53 @@ fun TailorListPage(navController: NavHostController) {
         color = Color.Transparent,
         modifier = Modifier.fillMaxSize()
     ) {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp)
+                .padding(top = 22.dp),
+            shape = RoundedCornerShape(16.dp),
+            elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp),// Adjust elevation as needed
+            colors = CardDefaults.cardColors(
+                containerColor = Color(0xFF673AB7) // Purple card background
+            )
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.LocationOn,
+                    contentDescription = "My Location",
+                    tint = Color(0xFFF06400)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Column {
+                    Text(
+                        text = "My Location",
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = Color.White
+                    )
+                    Text(
+                        text = "Park Hyatt, Jakarta Pusat",
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = Color.White
+                    )
+                }
+                Spacer(modifier = Modifier.weight(1f))
+                Icon(
+                    imageVector = Icons.Filled.ArrowDropDown,
+                    contentDescription = "Dropdown",
+                    tint = Color.White
+                )
+            }
+        }
         LazyColumn(
             modifier = Modifier
                 .padding(22.dp)
+                .padding(top = 80.dp)
                 .height(650.dp)
         ) {
             items(tailors.value) { tailor ->
@@ -111,36 +159,60 @@ fun TailorItem(tailor: Tailor, navController: NavHostController) {
                 contentScale = ContentScale.Crop
             )
             Spacer(modifier = Modifier.height(16.dp))
-            Column(modifier = Modifier) { // Remove weight
-                Text(
-                    text = tailor.name,
-                    style = MaterialTheme.typography.headlineMedium,
-                    fontSize = 25.sp,
-                    fontStyle = FontStyle.Normal,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(bottom = 4.dp)
-                )
-                Text(
-                    text = tailor.description,
-                    style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.padding(bottom = 4.dp)
-                )
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.padding(bottom = 4.dp)
-                ) {
-                    Icon(
-                        imageVector = Icons.Filled.Star,
-                        contentDescription = null,
-                        tint = Color(0xFFFDCF0C)
-                    )
-                    Spacer(modifier = Modifier.width(4.dp))
+            Row (
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ){
+                Column(modifier = Modifier) { // Remove weight
                     Text(
-                        text = tailor.reviews.toString(),
-                        style = MaterialTheme.typography.bodyMedium
+                        text = tailor.name,
+                        style = MaterialTheme.typography.headlineMedium,
+                        fontSize = 25.sp,
+                        fontStyle = FontStyle.Normal,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(bottom = 4.dp)
                     )
+                    Box (
+                        modifier = Modifier
+                            .width(200.dp)
+                    ) {
+                        Text(
+                            text = tailor.description,
+                            style = MaterialTheme.typography.bodyMedium,
+                            modifier = Modifier.padding(bottom = 4.dp)
+                        )
+                    }
+                }
+                Card (
+                    modifier = Modifier
+                        .padding(2.dp)
+                    ,
+                    elevation = CardDefaults.elevatedCardElevation(defaultElevation = 2.dp),
+                    shape = RoundedCornerShape(12.dp),
+                    colors = CardDefaults.cardColors(
+                        Color(0xFFF06400)
+                    )
+                ){
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.padding(6.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Filled.Star,
+                            contentDescription = null,
+                            tint = Color.White,
+                        )
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text(
+                            text = tailor.reviews.toString(),
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = Color.White
+                        )
+                    }
                 }
             }
+
 //            Spacer(modifier = Modifier.height(16.dp))
 //            Button(
 //                onClick = { /* TODO: Handle button click */ },

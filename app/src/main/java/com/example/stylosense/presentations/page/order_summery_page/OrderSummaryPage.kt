@@ -23,6 +23,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -50,6 +51,7 @@ import coil.compose.rememberImagePainter
 import com.example.stylosense.R
 import com.example.stylosense.presentations.graph.auth_graph.AuthPage
 import com.example.stylosense.presentations.graph.home_graph.ShopCommercePage
+import com.example.stylosense.presentations.page.activity_detail_page.SummaryListItem
 import com.example.stylosense.presentations.page.splash_page.Purple
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -90,7 +92,21 @@ fun OrderSummaryPage(navController: NavHostController, backStackEntry: NavBackSt
         ) {
             items(tailors.value) { tailor ->
                 TailorItem(tailor = tailor, navController = navController)
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(8.dp))
+                Divider()
+                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.width(16.dp))
+                com.example.stylosense.presentations.page.activity_detail_page.SummaryList(
+                    items = listOf(
+                        SummaryListItem("Vermak", "Rp25.000"),
+                        SummaryListItem("Platform fee", "Rp1.500"),
+                        SummaryListItem("Delivery fee", "Rp10.000"),
+                        SummaryListItem("Total", "Rp36.500")
+                    )
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Divider()
+                Spacer(modifier = Modifier.height(200.dp))
                 Button(
                     onClick = {
                             navController.navigate(ShopCommercePage.PaymentMethodPage.route)
@@ -111,6 +127,24 @@ fun OrderSummaryPage(navController: NavHostController, backStackEntry: NavBackSt
                         fontFamily = FontFamily(Font(R.font.muli_bold))
                     )
                 }
+            }
+        }
+    }
+}
+
+@Composable
+fun SummaryList(items: List<SummaryListItem>) {
+    Column {
+        items.forEach { item ->
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 4.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(text = item.label)
+                Text(text = item.value)
             }
         }
     }
@@ -221,6 +255,7 @@ fun parseJson(json: String): List<Tailor> {
 //    return tailors.value.find { it.id == id }
 //}
 
+@SuppressLint("CoroutineCreationDuringComposition")
 @Composable
 fun getTailorById(id: Int): Tailor? {
     val tailors = remember { mutableStateOf<List<Tailor>>(emptyList()) }

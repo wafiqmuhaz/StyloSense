@@ -80,12 +80,12 @@ fun OTPPage(navController: NavHostController) {
                 style = MaterialTheme.typography.headlineMedium
             )
         }
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(60.dp))
 
         // Profile Image Placeholder
         Box(
             modifier = Modifier
-                .size(120.dp)
+                .size(140.dp)
                 .background(Color.LightGray, RoundedCornerShape(8.dp)),
             contentAlignment = Alignment.Center
         ) {
@@ -103,6 +103,8 @@ fun OTPPage(navController: NavHostController) {
         Spacer(modifier = Modifier.height(8.dp))
         // Description
         Text(
+            modifier = Modifier
+                .padding(horizontal = 20.dp),
             text = "We have sent you one-time verification code your mobile phone number +62 82274098234",
             style = MaterialTheme.typography.bodyLarge
         )
@@ -111,7 +113,7 @@ fun OTPPage(navController: NavHostController) {
         // OTP Input Fields
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp)
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp).padding(vertical = 20.dp)
         ) {
             otpCode.forEachIndexed { index, code ->
                 OutlinedTextField(
@@ -126,10 +128,10 @@ fun OTPPage(navController: NavHostController) {
                     },
                     modifier = Modifier
                         .weight(1f)
-                        .height(56.dp),
+                        .height(112.dp),
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                    shape = CircleShape,
+                    shape = RoundedCornerShape(12.dp),
                     label = { Text("") }
                 )
                 if (index < otpCode.size - 1) {
@@ -146,6 +148,7 @@ fun OTPPage(navController: NavHostController) {
             },
             modifier = Modifier
                 .padding(vertical = 16.dp)
+                .padding(horizontal = 20.dp)
                 .fillMaxWidth()
                 .height(50.dp),
             shape = RoundedCornerShape(10.dp),

@@ -104,25 +104,25 @@ fun TrackOrderPage() {
             status = "Pick up",
             completed = true,
             icon = Icons.Default.CheckCircle,
-            iconColor = Color.Green
+            iconColor = Color(0xFF00AA13)
         )
         OrderStatusRow(
             status = "On progress",
             completed = false,
             icon = Icons.Default.Info, //HourglassEmpty
-            iconColor = Color.Yellow
+            iconColor = Color(0xFFF06400)
         )
         OrderStatusRow(
             status = "Delivery",
             completed = true,
             icon = Icons.Default.CheckCircle,
-            iconColor = Color.Green
+            iconColor = Color(0xFF484848)
         )
         OrderStatusRow(
             status = "Finished",
             completed = true,
             icon = Icons.Default.CheckCircle,
-            iconColor = Color.Green
+            iconColor = Color(0xFF484848)
         )
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -159,13 +159,13 @@ fun TrackOrderPage() {
             status = "Penjemputan",
             completed = true,
             icon = Icons.Default.CheckCircle,
-            iconColor = Color.Green
+            iconColor = Color(0xFF00AA13)
         )
         OrderStatusRow(
             status = "Proses Pengerjaan",
             completed = false,
             icon = Icons.Default.Info, //HourglassEmpty
-            iconColor = Color.Yellow
+            iconColor = Color(0xFFF06400)
         )
         Spacer(modifier = Modifier.height(16.dp))
 

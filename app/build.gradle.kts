@@ -106,4 +106,6 @@ dependencies {
     implementation("io.ktor:ktor-client-core:2.3.11")
     implementation("io.ktor:ktor-client-android:2.3.11")
     implementation("io.ktor:ktor-client-serialization:2.3.11")
+    //AI CHATBOT
+    implementation("com.google.ai.client.generativeai:generativeai:0.8.0")
 }

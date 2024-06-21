@@ -11,8 +11,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.compose.rememberNavController
 import com.example.stylosense.presentations.graph.root_graph.RootNavigationGraph
+import com.example.stylosense.presentations.model.ChatViewModel
 import com.example.stylosense.presentations.page.ml_feature_page.MainViewModel
 import com.example.stylosense.presentations.page.ml_feature_page.MainViewModelFactory
 import com.example.stylosense.ui.theme.StyloSenseTheme
@@ -25,6 +27,7 @@ class MainActivity : ComponentActivity() {
         val viewModel: MainViewModel by viewModels {
             MainViewModelFactory(application)
         }
+        val chatViewModel = ViewModelProvider(this)[ChatViewModel::class.java]
         setContent {
             StyloSenseTheme {
                 // A surface container using the 'background' color from the theme
