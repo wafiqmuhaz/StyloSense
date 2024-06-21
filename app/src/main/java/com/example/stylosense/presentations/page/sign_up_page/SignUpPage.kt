@@ -74,7 +74,7 @@ fun SignUpPage(navController: NavController) {
         }
         Spacer(modifier = Modifier.height(45.dp))
         Image(
-            painter = painterResource(id = R.drawable.register_logo),
+            painter = painterResource(id = R.drawable.tailor_kid),
             contentDescription = "Ilustration",
             modifier = Modifier.size(170.dp)
         )
