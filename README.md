@@ -42,3 +42,27 @@ API Documentation Endpoint Machine Learning: [Endpoint](https://stylosense-ml-se
 
 Download Link APK StyloSense:<br>
 [StyloSense (Google Drive)](https://drive.google.com/drive/folders/1A848q_ADHqx-Y2z9ZSVee3AIbim12eXo)
+
+
+&nbsp;
+
+## 📊 &nbsp;Stats
+
+![Wafiq Muhaz Github Stats](https://github-readme-stats.vercel.app/api?username=wafiqmuhaz&hide=contribs,prs&show_icons=true&bg_color=0d1116&title_color=ce09ec&text_color=a4aacb&icon_color=007ec6)
+
+![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=wafiqmuhaz&theme=dark&count_private=true&bg_color=0d1116&title_color=ce09ec&text_color=a4aacb&icon_color=007ec6)
+
+---
+
+## Links
+
+<p align="center">
+  <a href="https://medium.com/@wafiqmuhaz/"><img src="https://img.icons8.com/fluent/32/000000/domain.png" alt="darkwood"/></a>
+  <a href= "https://dev.to/wafiqmuhaz"><img src="https://img.icons8.com/windows/32/000000/dev.png"/></a>
+  <a href="mailto:wafiqmuhaz@gmail.com"><img src="https://img.icons8.com/color/32/000000/gmail.png" alt="email"/></a>
+  <a href="https://www.linkedin.com/in/wafiqmuhaz/"><img src="https://img.icons8.com/color/32/000000/linkedin.png" alt="linkedin"/></a>
+  <a href="https://hub.docker.com/u/wafiqmuhaz"><img src="https://img.icons8.com/color/32/000000/docker.png" alt="docker"/></a>
+  <a href="https://www.youtube.com/@wafiqmuhaz1890"><img src="https://img.icons8.com/color/32/000000/youtube.png" alt="youtube"/></a>
+  <a href="https://twitter.com/azwamuh"><img src="https://img.icons8.com/color/32/000000/twitter-squared.png" alt="twitter"/></a>
+  <a href= "https://www.tiktok.com/@az.wamuh_"><img src="https://img.icons8.com/fluent/32/000000/tiktok.png"/></a>
+</p>
